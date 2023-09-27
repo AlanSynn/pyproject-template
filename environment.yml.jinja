@@ -1,0 +1,32 @@
+name: {{project_name}}-environment
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - plotly
+  - intel
+dependencies:
+  - python=3.10
+  - pip=23.1.2
+
+# build tools
+  - make
+  - setuptools=68.0.0
+
+# third party packages - deep learning
+  - pytorch=1.11
+
+# third party packages - onnx
+  - onnx
+  - onnxconverter-common
+
+# third party packages - neural compressor
+  - neural-compressor
+
+# third party packages - distributed computing
+  - pytest
+  - pytest-cov
+
+# PIP packages
+  - pip:
+    - onnxruntime-gpu==1.14

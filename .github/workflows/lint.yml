@@ -1,0 +1,52 @@
+# This GitHub Action performs code linting on pull request events
+name: 'Linting'
+
+# Trigger the workflow on pull request events
+on:
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '**.rst'
+      - '**.md'
+
+permissions:
+  contents: read
+  packages: write
+
+# Default shell for all run steps
+defaults:
+  run:
+    shell: bash -l {0}
+
+jobs:
+  sanity_check:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out a copy of your repository under $GITHUB_WORKSPACE
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      # Set up a conda environment using the specified environment file
+      - name: Setup Conda environment from environment.yml
+        uses: mamba-org/setup-micromamba@v1
+        with:
+          # environment-file is not assumed anymore
+          environment-file: .github/ci_environment.yml
+          # now called cache-environment
+          cache-environment: true
+          post-cleanup: 'all'
+
+      # Run linting
+      - name: Perform Linting
+        run: make lint
+
+      # Uncomment the following lines to run the build tests
+      # Commented by: Alan Synn (alan@alansynn.com)
+      # Date: 2023-07-05
+      # # Run Python package build
+      # - name: Build Python package
+      #   run: make build

@@ -1,0 +1,14 @@
+#include <torch/extension.h>
+#include "{{project_name}}.h"
+//==============================================================================
+namespace {{project_name}} {
+//==============================================================================
+void register_extension() {
+    // This function is intentionally left blank.
+}
+} // namespace {{project_name}}
+//==============================================================================
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+  m.def("register_extension", &{{project_name}}::register_extension, "register extension");
+}
+//==============================================================================

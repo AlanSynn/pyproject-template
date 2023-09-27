@@ -1,0 +1,51 @@
+name: {{project_name}}-environment
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - plotly
+dependencies:
+  - python=3.10
+  - pip=23.1.2
+
+# linting and formatting
+  - black=23.3.0
+  - flake8=6.1.0
+  - autopep8=2.0.2
+  - isort=5.12.0
+  - clang-format=16.0.6
+  - pre-commit
+  - nbstripout
+
+# build tools
+  - make
+  - setuptools=68.0.0
+
+# miscellenous tools
+  - go # addlicense
+
+# third party packages - data science
+  - numpy
+  - hypothesis
+  - jupyterlab
+  - ipywidgets
+  - plotly_express
+  - wandb
+
+# third party packages - deep learning
+  - pytorch=1.11
+
+# third party packages - onnx
+  - onnx
+  - onnxruntime=1.14
+  - onnxconverter-common
+
+# third party packages - neural compressor
+  - neural-compressor
+
+# third party packages - distributed computing
+  - pytest
+  - pytest-cov
+
+  - sphinx
+  - pydata-sphinx-theme

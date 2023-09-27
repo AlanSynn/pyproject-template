@@ -1,0 +1,22 @@
+[metadata]
+long_description=file: README.rst
+long_description_content_type=text/markdown
+
+classifiers =
+    Development Status :: 2 - Pre-Alpha
+    License :: Other/Proprietary License
+    Programming Language :: Python
+    Programming Language :: Python :: 3.7
+    Programming Language :: Python :: 3.8
+    Programming Language :: Python :: 3.9
+    Programming Language :: Python :: 3.10
+    Programming Language :: Python :: 3 :: Only
+
+[aliases]
+test = pytest
+
+[tool:pytest]
+addopts = -v
+norecursedirs = .git env tmp*
+python_files = test_*.py example_*.py
+pythonpath = . {{project_name}}
